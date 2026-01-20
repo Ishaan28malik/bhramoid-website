@@ -1,0 +1,15 @@
+.export-test-page {
+  min-height: calc(100vh - 70px);
+  padding-top: 100px;
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.model-display {
+  width: 100%;
+  height: 600px;
+  margin-top: 40px;
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  position: relative;
+}
