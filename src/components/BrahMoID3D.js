@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei';
-import { captureFrame, downloadImage, captureFrames, createGIF, downloadGIF } from '../utils/export3DModel';
+// import { captureFrame, downloadImage, captureFrames, createGIF, downloadGIF } from '../utils/export3DModel';
 import './BrahMoID3D.css';
-import './ModelExporter.css';
+// import './ModelExporter.css';
 
 // Model 1: Brahma-Inspired with Multiple Heads
 function BrahMoIDLogo1() {
@@ -378,113 +378,113 @@ function BrahMoIDLogo2() {
   );
 }
 
-// Export controls component
-function ExportControls({ gl, scene, camera }) {
-  const [isExporting, setIsExporting] = useState(false);
-  const [exportProgress, setExportProgress] = useState(0);
-  const [exportType, setExportType] = useState('image');
+// Export controls component (commented out - can be enabled when needed)
+// function ExportControls({ gl, scene, camera }) {
+//   const [isExporting, setIsExporting] = useState(false);
+//   const [exportProgress, setExportProgress] = useState(0);
+//   const [exportType, setExportType] = useState('image');
 
-  const handleExportImage = async () => {
-    if (!gl || !scene || !camera) return;
-    setIsExporting(true);
-    try {
-      gl.render(scene, camera);
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const dataURL = await captureFrame(gl, 'png');
-      downloadImage(dataURL, 'brahmoid-3d-model.png');
-      setIsExporting(false);
-    } catch (error) {
-      console.error('Error exporting image:', error);
-      setIsExporting(false);
-    }
-  };
+//   const handleExportImage = async () => {
+//     if (!gl || !scene || !camera) return;
+//     setIsExporting(true);
+//     try {
+//       gl.render(scene, camera);
+//       await new Promise(resolve => setTimeout(resolve, 200));
+//       const dataURL = await captureFrame(gl, 'png');
+//       downloadImage(dataURL, 'brahmoid-3d-model.png');
+//       setIsExporting(false);
+//     } catch (error) {
+//       console.error('Error exporting image:', error);
+//       setIsExporting(false);
+//     }
+//   };
 
-  const handleExportGIF = async () => {
-    if (!gl || !scene || !camera) return;
-    setIsExporting(true);
-    setExportProgress(0);
-    try {
-      const frameCount = 30;
-      const frameDelay = 100;
+//   const handleExportGIF = async () => {
+//     if (!gl || !scene || !camera) return;
+//     setIsExporting(true);
+//     setExportProgress(0);
+//     try {
+//       const frameCount = 30;
+//       const frameDelay = 100;
       
-      const frames = await captureFrames(
-        gl,
-        () => gl.render(scene, camera),
-        frameCount,
-        frameDelay
-      );
+//       const frames = await captureFrames(
+//         gl,
+//         () => gl.render(scene, camera),
+//         frameCount,
+//         frameDelay
+//       );
       
-      setExportProgress(50);
-      const gifBlob = await createGIF(
-        frames,
-        10,
-        (progress) => setExportProgress(50 + (progress * 0.5))
-      );
+//       setExportProgress(50);
+//       const gifBlob = await createGIF(
+//         frames,
+//         10,
+//         (progress) => setExportProgress(50 + (progress * 0.5))
+//       );
       
-      downloadGIF(gifBlob, 'brahmoid-3d-model.gif');
-      setExportProgress(100);
-      setIsExporting(false);
-    } catch (error) {
-      console.error('Error exporting GIF:', error);
-      setIsExporting(false);
-    }
-  };
+//       downloadGIF(gifBlob, 'brahmoid-3d-model.gif');
+//       setExportProgress(100);
+//       setIsExporting(false);
+//     } catch (error) {
+//       console.error('Error exporting GIF:', error);
+//       setIsExporting(false);
+//     }
+//   };
 
-  if (!gl) return null;
+//   if (!gl) return null;
 
-  return (
-    <div className="model-exporter">
-      <div className="exporter-controls">
-        <select 
-          value={exportType} 
-          onChange={(e) => setExportType(e.target.value)}
-          disabled={isExporting}
-          className="export-type-select"
-        >
-          <option value="image">Export as Image (PNG)</option>
-          <option value="gif">Export as Animated GIF</option>
-        </select>
+//   return (
+//     <div className="model-exporter">
+//       <div className="exporter-controls">
+//         <select 
+//           value={exportType} 
+//           onChange={(e) => setExportType(e.target.value)}
+//           disabled={isExporting}
+//           className="export-type-select"
+//         >
+//           <option value="image">Export as Image (PNG)</option>
+//           <option value="gif">Export as Animated GIF</option>
+//         </select>
         
-        <button
-          onClick={exportType === 'image' ? handleExportImage : handleExportGIF}
-          disabled={isExporting}
-          className="export-btn"
-        >
-          {isExporting ? 'Exporting...' : `Export ${exportType === 'image' ? 'Image' : 'GIF'}`}
-        </button>
-      </div>
+//         <button
+//           onClick={exportType === 'image' ? handleExportImage : handleExportGIF}
+//           disabled={isExporting}
+//           className="export-btn"
+//         >
+//           {isExporting ? 'Exporting...' : `Export ${exportType === 'image' ? 'Image' : 'GIF'}`}
+//         </button>
+//       </div>
       
-      {isExporting && (
-        <div className="export-progress">
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${exportProgress}%` }}
-            />
-          </div>
-          <span className="progress-text">{Math.round(exportProgress)}%</span>
-        </div>
-      )}
-    </div>
-  );
-}
+//       {isExporting && (
+//         <div className="export-progress">
+//           <div className="progress-bar">
+//             <div 
+//               className="progress-fill" 
+//               style={{ width: `${exportProgress}%` }}
+//             />
+//           </div>
+//           <span className="progress-text">{Math.round(exportProgress)}%</span>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
 
-// Component to capture renderer context
-function RendererCapture({ onReady }) {
-  const { gl, scene, camera } = useThree();
-  
-  React.useEffect(() => {
-    if (gl && scene && camera && onReady) {
-      onReady({ gl, scene, camera });
-    }
-  }, [gl, scene, camera, onReady]);
+// Component to capture renderer context (commented out - can be enabled when needed)
+// function RendererCapture({ onReady }) {
+//   const { gl, scene, camera } = useThree();
+//   
+//   React.useEffect(() => {
+//     if (gl && scene && camera && onReady) {
+//       onReady({ gl, scene, camera });
+//     }
+//   }, [gl, scene, camera, onReady]);
 
-  return null;
-}
+//   return null;
+// }
 
 function BrahMoID3D({ model = 1, className = '' }) {
-  const [currentModel, setCurrentModel] = useState(model);
-  const [rendererContext, setRendererContext] = useState(null);
+  // const [currentModel, setCurrentModel] = useState(model);
+  // const [rendererContext, setRendererContext] = useState(null);
 
   return (
     <div className={`brahmoid-3d-container ${className}`}>
@@ -507,15 +507,15 @@ function BrahMoID3D({ model = 1, className = '' }) {
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
         gl={{ antialias: true, alpha: true }}
-        key={currentModel}
+        key={model}
       >
-        <RendererCapture onReady={setRendererContext} />
+        {/* <RendererCapture onReady={setRendererContext} /> */}
         <PerspectiveCamera makeDefault position={[0, 0, 8]} />
         <ambientLight intensity={0.7} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
         <directionalLight position={[-10, -10, -5]} intensity={1.0} />
         <pointLight position={[0, 10, 0]} intensity={0.6} />
-        {currentModel === 1 ? <BrahMoIDLogo1 /> : <BrahMoIDLogo2 />}
+        {model === 1 ? <BrahMoIDLogo1 /> : <BrahMoIDLogo2 />}
         <OrbitControls
           enableZoom={false}
           enablePan={false}

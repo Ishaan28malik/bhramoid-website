@@ -146,8 +146,7 @@ export const downloadGIF = (blob, filename = 'brahmoid-model.gif') => {
  */
 export const saveToPublicFolder = async (dataURL, filename) => {
   // Convert data URL to blob
-  const response = await fetch(dataURL);
-  const blob = await response.blob();
+  await fetch(dataURL);
   
   // In a real implementation, you would send this to your backend
   // For now, we'll just download it
