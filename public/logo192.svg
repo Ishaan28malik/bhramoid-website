@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background -->
+  <rect width="192" height="192" fill="#000000"/>
+  
+  <!-- Main B letter -->
+  <path d="M 50 40 L 50 152 L 100 152 Q 120 152 120 132 Q 120 122 110 118 L 120 96 Q 120 76 100 76 L 50 76 Z" 
+        fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M 50 96 L 110 96 Q 120 96 120 86 Q 120 76 110 76 L 50 76 Z" 
+        fill="#000000"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="140" cy="60" r="15" fill="#FFFFFF"/>
+  <circle cx="140" cy="132" r="15" fill="#FFFFFF"/>
+  
+  <!-- Small accent -->
+  <rect x="150" y="90" width="20" height="12" fill="#FFFFFF"/>
+</svg>
