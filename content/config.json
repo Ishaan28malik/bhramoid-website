@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "title": "Rebuilding Indian Governance from the Ground Up",
+        "subtitle": "Take control of your democracy today",
+        "description": "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution."
+      },
+      {
+        "title": "Upgrading Legacy Democracy with Digital Innovation",
+        "subtitle": "Don't trust, verify",
+        "description": "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency."
+      },
+      {
+        "title": "Tackling Corruption Through Transparency and Accountability",
+        "subtitle": "Your governance. Your rules. Your future.",
+        "description": "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership."
+      }
+    ]
+  },
+  "sections": {
+    "section1": {
+      "title": "Your Competitive Edge in Modern Politics",
+      "blocks": [
+        {
+          "title": "Digital-First Campaign Strategy",
+          "icon": "📊",
+          "content": "In an era where digital presence determines electoral success, BrahMoID provides political leaders with cutting-edge tools to connect directly with constituents. Our platform enables real-time communication, data-driven decision making, and transparent governance practices that build trust and credibility."
+        },
+        {
+          "title": "Transparency as a Differentiator",
+          "icon": "🔍",
+          "content": "Voters increasingly demand accountability from their representatives. BrahMoID's transparent governance framework allows leaders to demonstrate integrity, track performance, and build a reputation for honest public service. This transparency becomes your strongest campaign asset."
+        },
+        {
+          "title": "Data-Driven Constituency Management",
+          "icon": "📈",
+          "content": "Make informed decisions based on real constituency data. Track grievances, monitor development projects, analyze feedback, and respond to citizen needs systematically. This data-driven approach ensures you address the issues that matter most to your voters."
+        },
+        {
+          "title": "Independent Platform Advantage",
+          "icon": "⚖️",
+          "content": "Unlike party-affiliated tools, BrahMoID operates independently, allowing you to maintain your unique political identity while leveraging powerful governance technology. Build your brand and reputation without being constrained by party limitations."
+        },
+        {
+          "title": "Cost-Effective Campaign Infrastructure",
+          "icon": "💰",
+          "content": "Traditional campaign infrastructure requires significant investment in technology, personnel, and systems. BrahMoID provides a comprehensive governance platform at a fraction of the cost, allowing you to allocate resources more effectively toward direct voter engagement."
+        },
+        {
+          "title": "Sustainable Long-Term Engagement",
+          "icon": "🔄",
+          "content": "Elections are won through consistent engagement, not just campaign season activity. BrahMoID enables continuous communication with constituents, building lasting relationships that translate into electoral support when it matters most."
+        }
+      ]
+    }
+  }
+}
