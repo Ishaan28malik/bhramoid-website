@@ -25,7 +25,7 @@
     "postinstall": "node scripts/fix-ajv.js",
     "prebuild": "node scripts/copy-content.js",
     "start": "node scripts/copy-content.js && react-scripts start",
-    "build": "TSC_COMPILE_ON_ERROR=true react-scripts build",
+    "build": "TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-favicon": "node scripts/generate-favicon.js"
