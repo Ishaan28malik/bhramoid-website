@@ -20,8 +20,9 @@
     "remark-gfm": "^4.0.0"
   },
   "scripts": {
+    "prebuild": "node scripts/copy-content.js",
     "start": "node scripts/copy-content.js && react-scripts start",
-    "build": "node scripts/copy-content.js && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-favicon": "node scripts/generate-favicon.js"
@@ -52,6 +53,11 @@
     "ajv": "^8.12.0",
     "ajv-keywords": "^5.1.0",
     "fork-ts-checker-webpack-plugin": {
+      "ajv": "^8.12.0",
+      "ajv-keywords": "^5.1.0",
+      "schema-utils": "^4.2.0"
+    },
+    "schema-utils": {
       "ajv": "^8.12.0",
       "ajv-keywords": "^5.1.0"
     }

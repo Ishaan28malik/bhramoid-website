@@ -8,7 +8,17 @@ import './HeroSlider.css';
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const { content, loading } = useContent('home/hero.md');
+  const { content, loading, error } = useContent('home/hero.md');
+  
+  // Debug: Log content loading
+  React.useEffect(() => {
+    if (content) {
+      console.log('Hero content loaded:', content);
+    }
+    if (error) {
+      console.error('Hero content error:', error);
+    }
+  }, [content, error]);
 
   // Parse slides from content
   const slides = React.useMemo(() => {
@@ -41,6 +51,7 @@ const HeroSlider = () => {
     const slide2 = content['Slide 2'] || {};
     const slide3 = content['Slide 3'] || {};
 
+    // Use content from markdown, fallback to defaults only if truly missing
     return [
       {
         title: slide1.title || "Rebuilding Indian Governance from the Ground Up",
