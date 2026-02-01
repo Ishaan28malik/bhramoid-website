@@ -1,7 +1,7 @@
 # Hero Section
 
 ## Slide 1
-title: "Rebuilding Indian Governance from the Ground Up"
+title: "Test"
 subtitle: "Take control of your democracy today"
 description: "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution."
 
