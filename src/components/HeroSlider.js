@@ -20,58 +20,60 @@ const HeroSlider = () => {
     }
   }, [content, error]);
 
+  // Default slides (fallback)
+  const defaultSlides = [
+    {
+      title: "Rebuilding Indian Governance from the Ground Up",
+      subtitle: "Take control of your democracy today",
+      description: "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution.",
+      id: 1
+    },
+    {
+      title: "Upgrading Legacy Democracy with Digital Innovation",
+      subtitle: "Don't trust, verify",
+      description: "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency.",
+      id: 2
+    },
+    {
+      title: "Tackling Corruption Through Transparency and Accountability",
+      subtitle: "Your governance. Your rules. Your future.",
+      description: "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership.",
+      id: 3
+    }
+  ];
+
   // Parse slides from content
   const slides = React.useMemo(() => {
-    if (!content) {
-      // Fallback to default content
+    // If content is loaded and has slides, use it
+    if (content && (content['Slide 1'] || content['Slide 2'] || content['Slide 3'])) {
+      const slide1 = content['Slide 1'] || {};
+      const slide2 = content['Slide 2'] || {};
+      const slide3 = content['Slide 3'] || {};
+
       return [
         {
-          title: "Rebuilding Indian Governance from the Ground Up",
-          subtitle: "Take control of your democracy today",
-          description: "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution.",
+          title: slide1.title || defaultSlides[0].title,
+          subtitle: slide1.subtitle || defaultSlides[0].subtitle,
+          description: slide1.description || defaultSlides[0].description,
           id: 1
         },
         {
-          title: "Upgrading Legacy Democracy with Digital Innovation",
-          subtitle: "Don't trust, verify",
-          description: "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency.",
+          title: slide2.title || defaultSlides[1].title,
+          subtitle: slide2.subtitle || defaultSlides[1].subtitle,
+          description: slide2.description || defaultSlides[1].description,
           id: 2
         },
         {
-          title: "Tackling Corruption Through Transparency and Accountability",
-          subtitle: "Your governance. Your rules. Your future.",
-          description: "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership.",
+          title: slide3.title || defaultSlides[2].title,
+          subtitle: slide3.subtitle || defaultSlides[2].subtitle,
+          description: slide3.description || defaultSlides[2].description,
           id: 3
         }
       ];
     }
-
-    // Parse slides from markdown content
-    const slide1 = content['Slide 1'] || {};
-    const slide2 = content['Slide 2'] || {};
-    const slide3 = content['Slide 3'] || {};
-
-    // Use content from markdown, fallback to defaults only if truly missing
-    return [
-      {
-        title: slide1.title || "Rebuilding Indian Governance from the Ground Up",
-        subtitle: slide1.subtitle || "Take control of your democracy today",
-        description: slide1.description || "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution.",
-        id: 1
-      },
-      {
-        title: slide2.title || "Upgrading Legacy Democracy with Digital Innovation",
-        subtitle: slide2.subtitle || "Don't trust, verify",
-        description: slide2.description || "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency.",
-        id: 2
-      },
-      {
-        title: slide3.title || "Tackling Corruption Through Transparency and Accountability",
-        subtitle: slide3.subtitle || "Your governance. Your rules. Your future.",
-        description: slide3.description || "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership.",
-        id: 3
-      }
-    ];
+    
+    // Fallback to default content
+    return defaultSlides;
   }, [content]);
 
   useEffect(() => {
