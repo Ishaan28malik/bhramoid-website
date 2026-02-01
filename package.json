@@ -24,7 +24,7 @@
   "scripts": {
     "postinstall": "node scripts/fix-ajv.js",
     "prebuild": "node scripts/copy-content.js",
-    "start": "node scripts/copy-content.js && react-scripts start",
+    "start": "node scripts/copy-content.js && DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
