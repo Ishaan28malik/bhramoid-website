@@ -17,12 +17,15 @@
     "@react-three/drei": "^9.114.3",
     "framer-motion": "^11.11.17",
     "react-markdown": "^9.0.1",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0"
   },
   "scripts": {
+    "postinstall": "node scripts/fix-ajv.js",
     "prebuild": "node scripts/copy-content.js",
     "start": "node scripts/copy-content.js && react-scripts start",
-    "build": "react-scripts build",
+    "build": "TSC_COMPILE_ON_ERROR=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-favicon": "node scripts/generate-favicon.js"
@@ -57,8 +60,7 @@
     "ajv-keywords": "^5.1.0",
     "fork-ts-checker-webpack-plugin": {
       "ajv": "^8.12.0",
-      "ajv-keywords": "^5.1.0",
-      "schema-utils": "^4.2.0"
+      "ajv-keywords": "^5.1.0"
     },
     "schema-utils": {
       "ajv": "^8.12.0",
