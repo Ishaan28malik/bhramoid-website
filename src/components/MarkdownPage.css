@@ -181,3 +181,67 @@
 [data-theme="light"] .markdown-page .markdown-content tr:hover td {
   background: rgba(0, 0, 0, 0.02);
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page.markdown-page {
+    padding-top: 90px;
+    padding-bottom: 2.5rem;
+  }
+
+  .markdown-page .markdown-content h1:first-child {
+    font-size: 1.75rem;
+  }
+
+  .markdown-page .markdown-content h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    padding-left: 0.75rem;
+  }
+
+  .markdown-page .markdown-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .markdown-page .markdown-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .markdown-page-content {
+    max-width: 100%;
+  }
+
+  /* Scrollable tables on small screens */
+  .markdown-page .markdown-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.9rem;
+  }
+
+  .markdown-page .markdown-content th,
+  .markdown-page .markdown-content td {
+    padding: 10px 12px;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page.markdown-page {
+    padding-top: 80px;
+    padding-bottom: 2rem;
+  }
+
+  .markdown-page .markdown-content h1:first-child {
+    font-size: 1.5rem;
+  }
+
+  .markdown-page .markdown-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .markdown-page .markdown-content blockquote {
+    padding: 0.75rem 1rem;
+  }
+}

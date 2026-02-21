@@ -371,11 +371,14 @@
 
 @media (max-width: 768px) {
   .page {
-    padding-top: 80px;
+    padding-top: 90px;
+    padding-bottom: 48px;
   }
 
   .page-title {
     font-size: 1.75rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 
   .content-block,
@@ -384,10 +387,39 @@
   .division-block,
   .funding-block,
   .serve-block {
-    padding: 20px;
+    padding: 1.25rem 1rem;
   }
 
   .serve-blocks {
     grid-template-columns: 1fr;
+  }
+
+  .content-row {
+    gap: 1.5rem;
+  }
+
+  .context-strip {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block,
+  .content-block-full,
+  .reform-block,
+  .division-block,
+  .funding-block,
+  .serve-block {
+    padding: 1rem;
   }
 }

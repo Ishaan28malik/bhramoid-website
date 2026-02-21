@@ -205,3 +205,35 @@
     gap: 40px;
   }
 }
+
+@media (max-width: 768px) {
+  .partner-cards {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
+
+  .partner-card {
+    padding: 1rem 1.25rem;
+  }
+
+  .contact-form-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .contact-form .form-group input,
+  .contact-form .form-group select,
+  .contact-form .form-group textarea {
+    font-size: 16px; /* prevents zoom on focus in iOS */
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-landing .partner-intro {
+    font-size: 1rem;
+  }
+
+  .partner-card {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+}

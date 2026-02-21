@@ -278,4 +278,52 @@
   .hero-cta {
     bottom: 60px;
   }
+
+  .slide-indicators {
+    bottom: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider {
+    min-height: 80vh;
+  }
+
+  .slider-container {
+    padding: 40px 16px 160px;
+  }
+
+  .slide-title {
+    font-size: 1.5rem;
+  }
+
+  .slide-subtitle {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+  }
+
+  .slide-description {
+    font-size: 0.95rem;
+  }
+
+  .hero-3d-model {
+    height: 200px;
+    max-width: 260px;
+    margin: 24px auto;
+  }
+
+  .cta-container .btn {
+    max-width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .hero-cta {
+    bottom: 50px;
+    padding: 0 16px;
+  }
+
+  .slide-indicators {
+    bottom: 90px;
+  }
 }

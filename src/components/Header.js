@@ -24,7 +24,7 @@ const CAREER_LINKS = [
   { to: '/career/syllabus', label: 'Syllabus' },
 ];
 
-const Dropdown = ({ label, links, isActive, onOpen, onClose, isOpen }) => {
+const Dropdown = ({ label, links, isActive, onOpen, onClose, isOpen, onNavigate }) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Dropdown = ({ label, links, isActive, onOpen, onClose, isOpen }) => {
         <ul className="nav-dropdown-menu" role="menu">
           {links.map(({ to, label }) => (
             <li key={to} role="none">
-              <Link to={to} className="nav-dropdown-item" role="menuitem" onClick={onClose}>
+              <Link to={to} className="nav-dropdown-item" role="menuitem" onClick={() => { onClose(); onNavigate?.(); }}>
                 {label}
               </Link>
             </li>
@@ -68,22 +68,45 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const aboutActive = ABOUT_LINKS.some(({ to }) => location.pathname === to) || location.pathname === '/about';
   const partnerActive = PARTNER_LINKS.some(({ to }) => location.pathname === to) || location.pathname === '/partner';
   const careerActive = CAREER_LINKS.some(({ to }) => location.pathname === to) || location.pathname === '/career';
 
+  const closeAll = () => {
+    setOpenDropdown(null);
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    closeAll();
+  }, [location.pathname]);
+
   return (
     <header className="header">
       <div className="header-container">
-        <Link to="/" className="logo" onClick={() => setOpenDropdown(null)}>
+        <Link to="/" className="logo" onClick={closeAll}>
           <span className="logo-text">BrahMoID</span>
         </Link>
-        <nav className="nav">
+
+        <button
+          type="button"
+          className="header-mobile-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
+
+        <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`} aria-hidden={!mobileMenuOpen}>
           <Link
             to="/"
             className={location.pathname === '/' ? 'active' : ''}
-            onClick={() => setOpenDropdown(null)}
+            onClick={closeAll}
           >
             Home
           </Link>
@@ -94,6 +117,7 @@ const Header = () => {
             isOpen={openDropdown === 'about'}
             onOpen={() => setOpenDropdown(openDropdown === 'about' ? null : 'about')}
             onClose={() => setOpenDropdown(null)}
+            onNavigate={closeAll}
           />
           <Dropdown
             label="Partner With Us"
@@ -102,6 +126,7 @@ const Header = () => {
             isOpen={openDropdown === 'partner'}
             onOpen={() => setOpenDropdown(openDropdown === 'partner' ? null : 'partner')}
             onClose={() => setOpenDropdown(null)}
+            onNavigate={closeAll}
           />
           <Dropdown
             label="Career"
@@ -110,6 +135,7 @@ const Header = () => {
             isOpen={openDropdown === 'career'}
             onOpen={() => setOpenDropdown(openDropdown === 'career' ? null : 'career')}
             onClose={() => setOpenDropdown(null)}
+            onNavigate={closeAll}
           />
         </nav>
         <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">

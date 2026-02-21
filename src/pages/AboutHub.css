@@ -42,3 +42,24 @@
   margin-left: 0.5rem;
   color: var(--accent);
 }
+
+@media (max-width: 768px) {
+  .about-hub .about-hub-content {
+    margin-bottom: 2rem;
+  }
+
+  .about-hub-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hub-card {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hub-card {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+}

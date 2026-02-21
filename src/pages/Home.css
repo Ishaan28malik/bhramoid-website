@@ -499,12 +499,14 @@
 
 @media (max-width: 768px) {
   .home-section {
-    padding: 60px 0;
+    padding: 3rem 0;
   }
 
   .section-title {
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .content-block,
@@ -512,13 +514,41 @@
   .reform-block,
   .division-block,
   .funding-block {
-    padding: 30px 20px;
+    padding: 1.5rem 1rem;
+  }
+
+  .content-row {
+    gap: 1.5rem;
   }
 
   .block-icon,
   .block-icon-large,
   .reform-icon,
   .funding-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .content-block h3,
+  .reform-block h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-section {
+    padding: 2.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block,
+  .content-block-full,
+  .reform-block,
+  .division-block,
+  .funding-block {
+    padding: 1.25rem 0.75rem;
   }
 }
