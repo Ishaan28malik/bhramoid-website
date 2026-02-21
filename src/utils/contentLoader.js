@@ -18,8 +18,9 @@ export const loadMarkdown = async (path) => {
   }
 
   try {
-    // In production, content files are in public/content
-    const fullPath = `/content/${path}`;
+    // In production, content files are in public/content; encode path segments for spaces/special chars
+    const encodedPath = path.split('/').map(segment => encodeURIComponent(segment)).join('/');
+    const fullPath = `/content/${encodedPath}`;
     const response = await fetch(fullPath);
     
     if (!response.ok) {
@@ -73,12 +74,18 @@ export const parseStructuredContent = (markdown) => {
         value = value.slice(1, -1);
       }
       
+      // Initialize problems/items as array so following list items are collected
+      if ((key === 'problems' || key === 'items') && !value) {
+        value = [];
+      }
       sections[currentSection][key] = value;
     }
     // List items (starting with -)
     else if (trimmedLine.startsWith('- ') && currentSection) {
-      const item = trimmedLine.substring(2).trim();
-      
+      let item = trimmedLine.substring(2).trim();
+      if ((item.startsWith('"') && item.endsWith('"')) || (item.startsWith("'") && item.endsWith("'"))) {
+        item = item.slice(1, -1);
+      }
       // Determine if it's problems or items list
       if (sections[currentSection].problems) {
         if (!Array.isArray(sections[currentSection].problems)) {
@@ -95,6 +102,18 @@ export const parseStructuredContent = (markdown) => {
         sections[currentSection].items = sections[currentSection].items || [];
         sections[currentSection].items.push(item);
       }
+    }
+    // Paragraph / body content (lines that are not ##, key:, or -)
+    else if (currentSection) {
+      const body = (sections[currentSection].body || '') + trimmedLine + '\n';
+      sections[currentSection].body = body;
+    }
+  });
+
+  // Trim body fields
+  Object.keys(sections).forEach((key) => {
+    if (sections[key].body) {
+      sections[key].body = sections[key].body.trim();
     }
   });
 

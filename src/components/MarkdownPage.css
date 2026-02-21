@@ -1,0 +1,183 @@
+/* Content page layout - Home-like sections and spacing */
+.page.markdown-page {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.markdown-page .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle section background */
+.markdown-page .container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -10%;
+  right: -10%;
+  height: 120%;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% 0%, var(--bg-secondary) 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg-secondary) 0%, transparent 15%, transparent 85%, var(--bg-secondary) 100%);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.markdown-page-content {
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Main title (first h1) - match Home page title style */
+.markdown-page .markdown-content h1:first-child {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  padding-bottom: 1.25rem;
+  position: relative;
+}
+
+.markdown-page .markdown-content h1:first-child::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+}
+
+.markdown-page .markdown-content h1:not(:first-child) {
+  margin-top: 3rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* Section headers (h2) - card-like blocks */
+.markdown-page .markdown-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0 0 0.5rem 0;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent);
+}
+
+.markdown-page .markdown-content h2:first-of-type {
+  margin-top: 2rem;
+}
+
+/* h3 */
+.markdown-page .markdown-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Paragraphs - generous spacing */
+.markdown-page .markdown-content p {
+  margin: 0 0 1.25rem 0;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+/* Lists */
+.markdown-page .markdown-content ul,
+.markdown-page .markdown-content ol {
+  margin: 0.5rem 0 1.5rem 1.5rem;
+  padding-left: 0.5rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.markdown-page .markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-page .markdown-content li::marker {
+  color: var(--accent);
+}
+
+/* Horizontal rule = section divider */
+.markdown-page .markdown-content hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 2px solid var(--border-color);
+  opacity: 0.8;
+}
+
+/* Blockquote if used */
+.markdown-page .markdown-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Strong */
+.markdown-page .markdown-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Tables (e.g. comparison pages) */
+.markdown-page .markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown-page .markdown-content th,
+.markdown-page .markdown-content td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.markdown-page .markdown-content th {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.markdown-page .markdown-content tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-page .markdown-content tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="light"] .markdown-page .markdown-content tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}

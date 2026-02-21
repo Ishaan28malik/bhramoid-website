@@ -17,6 +17,8 @@ const Footer = () => {
             <h4>Contact</h4>
             <a href="mailto:media@brahmoid.com">Media@BrahMoID</a>
             <Link to="/partner">Partner With Us</Link>
+            <Link to="/start-a-pilot">Start a Pilot</Link>
+            <Link to="/request-a-demo">Request a Demo</Link>
             <Link to="/model-comparison">3D Model Comparison</Link>
           </div>
           <div className="footer-section">

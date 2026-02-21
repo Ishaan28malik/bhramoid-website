@@ -9,16 +9,6 @@ const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const { content, loading, error } = useContent('home/hero.md');
-  
-  // Debug: Log content loading
-  React.useEffect(() => {
-    if (content) {
-      console.log('Hero content loaded:', content);
-    }
-    if (error) {
-      console.error('Hero content error:', error);
-    }
-  }, [content, error]);
 
   // Default slides (fallback)
   const defaultSlides = [
@@ -155,10 +145,10 @@ const HeroSlider = () => {
         transition={{ delay: 0.6 }}
       >
         <div className="cta-container">
-          <Link to="/partner" className="btn btn-primary">
+          <Link to="/start-a-pilot" className="btn btn-primary">
             <span>Start a Pilot</span>
           </Link>
-          <Link to="/partner" className="btn btn-primary">
+          <Link to="/request-a-demo" className="btn btn-primary">
             <span>Request a Demo</span>
           </Link>
           <Link to="/partner" className="btn btn-secondary">

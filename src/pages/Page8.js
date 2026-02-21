@@ -1,76 +1,61 @@
 import React from 'react';
+import { useContent } from '../hooks/useContent';
+import MarkdownContent from '../components/MarkdownContent';
 import './Page.css';
 
 const Page8 = () => {
+  const { content, loading, error } = useContent('whom-we-serve.md');
+
+  if (loading) {
+    return (
+      <div className="page">
+        <div className="container">
+          <h1 className="page-title">Whom Do We Serve</h1>
+          <p className="section-loading">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !content) {
+    return (
+      <div className="page">
+        <div className="container">
+          <h1 className="page-title">Whom Do We Serve</h1>
+          <p>Unable to load content.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const entries = Object.entries(content);
+  const keyMessageSection = entries.length > 0 ? entries[entries.length - 1] : null;
+  const serveBlocks = keyMessageSection ? entries.slice(0, -1) : entries;
+
   return (
     <div className="page">
       <div className="container">
         <h1 className="page-title">Whom Do We Serve</h1>
-        
+
         <div className="serve-blocks">
-          <div className="serve-block">
-            <h2>Elected Representatives</h2>
-            <p>
-              MLAs, MPs, and other elected officials who want to deliver transparent, accountable 
-              governance to their constituents. BrahMoID provides the tools to manage grievances, 
-              track projects, engage with citizens, and demonstrate performance.
-            </p>
-          </div>
-
-          <div className="serve-block">
-            <h2>Political Leaders</h2>
-            <p>
-              Emerging and established political leaders seeking to build credibility through 
-              transparent governance practices. Our platform helps leaders demonstrate integrity, 
-              track performance, and build trust with voters.
-            </p>
-          </div>
-
-          <div className="serve-block">
-            <h2>Political Parties</h2>
-            <p>
-              Political parties looking to provide their candidates and leaders with professional 
-              governance infrastructure. BrahMoID enables parties to ensure consistent, transparent 
-              service delivery across all their representatives.
-            </p>
-          </div>
-
-          <div className="serve-block">
-            <h2>Government Departments</h2>
-            <p>
-              Government departments and agencies seeking to improve citizen service delivery, 
-              enhance transparency, and streamline grievance resolution processes. Our platform 
-              integrates seamlessly with existing government systems.
-            </p>
-          </div>
-
-          <div className="serve-block">
-            <h2>Citizens and Civil Society</h2>
-            <p>
-              Citizens who want to engage with their representatives, file grievances, access 
-              information, and hold leaders accountable. Civil society organizations working to 
-              promote transparency and accountability in governance.
-            </p>
-          </div>
-
-          <div className="serve-block">
-            <h2>Panchayats and Local Bodies</h2>
-            <p>
-              Local governance bodies, panchayats, and municipal corporations seeking to modernize 
-              their operations, improve citizen engagement, and enhance transparency in local 
-              governance processes.
-            </p>
-          </div>
+          {serveBlocks.map(([sectionName, section]) => (
+            <div key={sectionName} className="serve-block">
+              <h2>{sectionName}</h2>
+              {(section.body || section.content) && (
+                <MarkdownContent content={section.body || section.content} />
+              )}
+            </div>
+          ))}
         </div>
 
-        <div className="serve-message-strip">
-          <h2>Democracy Served, Not Sold</h2>
-          <p>
-            BrahMoID serves anyone committed to transparent, accountable governance—regardless of 
-            political affiliation, ideology, or position. We believe that effective governance 
-            technology should be accessible to all who serve the public interest.
-          </p>
-        </div>
+        {keyMessageSection && (
+          <div className="serve-message-strip">
+            <h2>{keyMessageSection[0]}</h2>
+            {(keyMessageSection[1].body || keyMessageSection[1].content) && (
+              <MarkdownContent content={keyMessageSection[1].body || keyMessageSection[1].content} />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

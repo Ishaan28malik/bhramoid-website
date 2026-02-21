@@ -5,6 +5,13 @@
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
+.section-loading {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 1rem;
+  margin: 2rem 0;
+}
+
 .page-title {
   text-align: center;
   margin-bottom: 80px;

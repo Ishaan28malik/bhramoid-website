@@ -1,3 +1,71 @@
+.page.partner-landing {
+  position: relative;
+  overflow: hidden;
+}
+
+.page.partner-landing .container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -10%;
+  right: -10%;
+  height: 120%;
+  background: radial-gradient(ellipse 80% 50% at 50% 10%, var(--bg-secondary) 0%, transparent 55%);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page.partner-landing .container {
+  position: relative;
+  z-index: 1;
+}
+
+.partner-landing .partner-intro {
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.partner-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.partner-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.partner-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+.partner-card-label {
+  flex: 1;
+}
+
+.partner-card-arrow {
+  margin-left: 0.5rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
 .partner-content {
   display: grid;
   grid-template-columns: 1fr 1fr;

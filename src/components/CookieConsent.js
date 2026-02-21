@@ -1,191 +1,173 @@
 import React, { useState, useEffect } from 'react';
+import { useMarkdown } from '../hooks/useContent';
+import MarkdownContent from './MarkdownContent';
 import './CookieConsent.css';
 
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
-  const [showPreferences, setShowPreferences] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
+  const [activeTab, setActiveTab] = useState('policy'); // 'policy' | 'preferences'
   const [preferences, setPreferences] = useState({
-    essential: true, // Always true, cannot be disabled
+    essential: true,
     analytics: false,
-    marketing: false
+    marketing: false,
   });
+  const { markdown: policyMarkdown, loading: policyLoading } = useMarkdown('Policies/cookie-policy.md');
 
   useEffect(() => {
-    // Check if user has already made a choice
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
       setShowBanner(true);
     } else {
-      const savedPreferences = JSON.parse(consent);
-      setPreferences(savedPreferences);
+      try {
+        const saved = JSON.parse(consent);
+        setPreferences(saved);
+      } catch (_) {}
     }
   }, []);
 
-  const handleAcceptAll = () => {
-    const allAccepted = {
-      essential: true,
-      analytics: true,
-      marketing: true
-    };
-    setPreferences(allAccepted);
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
+  const close = () => {
     setShowBanner(false);
+    setShowPanel(false);
+  };
+
+  const handleAcceptAll = () => {
+    const all = { essential: true, analytics: true, marketing: true };
+    setPreferences(all);
+    localStorage.setItem('cookieConsent', JSON.stringify(all));
+    close();
   };
 
   const handleRejectAll = () => {
-    const onlyEssential = {
-      essential: true,
-      analytics: false,
-      marketing: false
-    };
-    setPreferences(onlyEssential);
-    localStorage.setItem('cookieConsent', JSON.stringify(onlyEssential));
-    setShowBanner(false);
+    const essential = { essential: true, analytics: false, marketing: false };
+    setPreferences(essential);
+    localStorage.setItem('cookieConsent', JSON.stringify(essential));
+    close();
   };
 
   const handleSavePreferences = () => {
     localStorage.setItem('cookieConsent', JSON.stringify(preferences));
-    setShowBanner(false);
-    setShowPreferences(false);
+    close();
   };
 
-  const handleCustomize = () => {
-    setShowPreferences(true);
-  };
-
-  if (!showBanner && !showPreferences) {
-    return null;
-  }
+  if (!showBanner && !showPanel) return null;
 
   return (
     <>
-      {showBanner && !showPreferences && (
-        <div className="cookie-banner">
-          <div className="cookie-banner-content">
-            <div className="cookie-banner-text">
-              <h3>Cookie Consent</h3>
-              <p>
-                We use cookies to enhance your browsing experience, analyze site traffic, and 
-                personalize content. By clicking "Accept All", you consent to our use of cookies. 
-                You can customize your preferences or reject non-essential cookies.
+      {showBanner && !showPanel && (
+        <div className="cookie-banner-new" role="dialog" aria-label="Cookie consent">
+          <div className="cookie-banner-inner">
+            <div className="cookie-banner-icon">🍪</div>
+            <div className="cookie-banner-copy">
+              <h3 className="cookie-banner-title">We value your privacy</h3>
+              <p className="cookie-banner-desc">
+                We use cookies to run the site and improve your experience. You can accept all, 
+                reject non-essential, or read our full Cookie Policy and choose what you allow.
               </p>
             </div>
-            <div className="cookie-banner-buttons">
-              <button className="btn btn-secondary" onClick={handleRejectAll}>
-                Reject All
+            <div className="cookie-banner-actions">
+              <button type="button" className="cookie-btn cookie-btn-ghost" onClick={handleRejectAll}>
+                Reject non-essential
               </button>
-              <button className="btn" onClick={handleCustomize}>
-                Customize
+              <button type="button" className="cookie-btn cookie-btn-secondary" onClick={() => setShowPanel(true)}>
+                Cookie Policy & preferences
               </button>
-              <button className="btn" onClick={handleAcceptAll}>
-                Accept All
+              <button type="button" className="cookie-btn cookie-btn-primary" onClick={handleAcceptAll}>
+                Accept all
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {showPreferences && (
-        <div className="cookie-preferences-modal">
-          <div className="cookie-preferences-content">
-            <div className="cookie-preferences-header">
-              <h2>Cookie Preferences</h2>
-              <button 
-                className="close-button" 
-                onClick={() => setShowPreferences(false)}
-                aria-label="Close"
+      {showPanel && (
+        <div className="cookie-panel-overlay" onClick={() => setShowPanel(false)} role="presentation">
+          <div className="cookie-panel" onClick={e => e.stopPropagation()} role="dialog" aria-labelledby="cookie-panel-title">
+            <div className="cookie-panel-header">
+              <h2 id="cookie-panel-title">Cookie Policy & Preferences</h2>
+              <button type="button" className="cookie-panel-close" onClick={() => setShowPanel(false)} aria-label="Close">×</button>
+            </div>
+            <div className="cookie-panel-tabs">
+              <button
+                type="button"
+                className={`cookie-tab ${activeTab === 'policy' ? 'active' : ''}`}
+                onClick={() => setActiveTab('policy')}
               >
-                ×
+                Cookie Policy
+              </button>
+              <button
+                type="button"
+                className={`cookie-tab ${activeTab === 'preferences' ? 'active' : ''}`}
+                onClick={() => setActiveTab('preferences')}
+              >
+                Preferences
               </button>
             </div>
-
-            <div className="cookie-preferences-body">
-              <p>
-                Manage your cookie preferences. You can enable or disable different types of cookies 
-                below. Essential cookies cannot be disabled as they are necessary for the website to function.
-              </p>
-
-              <div className="cookie-category">
-                <div className="cookie-category-header">
-                  <div>
-                    <h3>Essential Cookies</h3>
-                    <p>Required for the website to function properly</p>
+            <div className="cookie-panel-body">
+              {activeTab === 'policy' && (
+                <div className="cookie-policy-embed">
+                  {policyLoading && <p className="cookie-loading">Loading Cookie Policy…</p>}
+                  {!policyLoading && policyMarkdown && (
+                    <MarkdownContent content={policyMarkdown} className="cookie-policy-content" />
+                  )}
+                </div>
+              )}
+              {activeTab === 'preferences' && (
+                <div className="cookie-preferences-new">
+                  <p className="cookie-pref-intro">
+                    Choose which cookies you allow. Essential cookies are required for the site to work.
+                  </p>
+                  <div className="cookie-pref-item">
+                    <div className="cookie-pref-label">
+                      <strong>Essential</strong>
+                      <span>Required for the site to function</span>
+                    </div>
+                    <span className="cookie-pref-badge">Always on</span>
                   </div>
-                  <label className="toggle-switch">
-                    <input
-                      type="checkbox"
-                      checked={preferences.essential}
-                      disabled
-                      readOnly
-                    />
-                    <span className="toggle-slider"></span>
-                  </label>
-                </div>
-                <p className="cookie-description">
-                  These cookies are necessary for the website to function and cannot be disabled. 
-                  They include session management, security, and basic functionality.
-                </p>
-              </div>
-
-              <div className="cookie-category">
-                <div className="cookie-category-header">
-                  <div>
-                    <h3>Analytics Cookies</h3>
-                    <p>Help us understand how visitors use our website</p>
+                  <div className="cookie-pref-item">
+                    <div className="cookie-pref-label">
+                      <strong>Analytics</strong>
+                      <span>Help us understand how the site is used</span>
+                    </div>
+                    <label className="cookie-toggle">
+                      <input
+                        type="checkbox"
+                        checked={preferences.analytics}
+                        onChange={e => setPreferences(p => ({ ...p, analytics: e.target.checked }))}
+                      />
+                      <span className="cookie-toggle-slider" />
+                    </label>
                   </div>
-                  <label className="toggle-switch">
-                    <input
-                      type="checkbox"
-                      checked={preferences.analytics}
-                      onChange={(e) =>
-                        setPreferences({ ...preferences, analytics: e.target.checked })
-                      }
-                    />
-                    <span className="toggle-slider"></span>
-                  </label>
-                </div>
-                <p className="cookie-description">
-                  These cookies collect anonymous information about how you use our website, helping 
-                  us improve performance and user experience.
-                </p>
-              </div>
-
-              <div className="cookie-category">
-                <div className="cookie-category-header">
-                  <div>
-                    <h3>Marketing Cookies</h3>
-                    <p>Used to deliver relevant advertisements</p>
+                  <div className="cookie-pref-item">
+                    <div className="cookie-pref-label">
+                      <strong>Marketing</strong>
+                      <span>Used for relevant messaging (we do not sell data)</span>
+                    </div>
+                    <label className="cookie-toggle">
+                      <input
+                        type="checkbox"
+                        checked={preferences.marketing}
+                        onChange={e => setPreferences(p => ({ ...p, marketing: e.target.checked }))}
+                      />
+                      <span className="cookie-toggle-slider" />
+                    </label>
                   </div>
-                  <label className="toggle-switch">
-                    <input
-                      type="checkbox"
-                      checked={preferences.marketing}
-                      onChange={(e) =>
-                        setPreferences({ ...preferences, marketing: e.target.checked })
-                      }
-                    />
-                    <span className="toggle-slider"></span>
-                  </label>
                 </div>
-                <p className="cookie-description">
-                  These cookies track your browsing habits to deliver personalized advertisements 
-                  and measure campaign effectiveness.
-                </p>
-              </div>
-
-              <div className="cookie-preferences-footer">
-                <a href="/cookie-policy" className="cookie-policy-link">
-                  Learn more in our Cookie Policy
-                </a>
-                <div className="cookie-preferences-actions">
-                  <button className="btn btn-secondary" onClick={handleRejectAll}>
-                    Reject All
-                  </button>
-                  <button className="btn" onClick={handleSavePreferences}>
-                    Save Preferences
-                  </button>
-                </div>
-              </div>
+              )}
+            </div>
+            <div className="cookie-panel-footer">
+              <button type="button" className="cookie-btn cookie-btn-ghost" onClick={handleRejectAll}>
+                Reject non-essential
+              </button>
+              {activeTab === 'preferences' ? (
+                <button type="button" className="cookie-btn cookie-btn-primary" onClick={handleSavePreferences}>
+                  Save preferences
+                </button>
+              ) : (
+                <button type="button" className="cookie-btn cookie-btn-primary" onClick={handleAcceptAll}>
+                  Accept all
+                </button>
+              )}
             </div>
           </div>
         </div>
