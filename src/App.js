@@ -33,6 +33,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
 import TermsOfUse from './pages/TermsOfUse';
 import ModelComparison from './components/ModelComparison';
+import LearnMorePage from './pages/LearnMorePage';
 import './App.css';
 
 function App() {
@@ -74,6 +75,17 @@ function App() {
               <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/terms-of-use" element={<TermsOfUse />} />
               <Route path="/model-comparison" element={<ModelComparison />} />
+              {/* Section 1 (Competitive Edge) learn more pages */}
+              <Route path="/transparency-accountability" element={<LearnMorePage />} />
+              <Route path="/project-transparency" element={<LearnMorePage />} />
+              <Route path="/digital-democracy" element={<LearnMorePage />} />
+              <Route path="/digital-identity-insights" element={<LearnMorePage />} />
+              <Route path="/merit-based-leadership" element={<LearnMorePage />} />
+              {/* Section 2 (Reform) learn more pages */}
+              <Route path="/rti-reform" element={<LearnMorePage />} />
+              <Route path="/rtr-issues" element={<LearnMorePage />} />
+              <Route path="/citizen-feedback" element={<LearnMorePage />} />
+              <Route path="/grievance-resolution" element={<LearnMorePage />} />
             </Routes>
           </main>
           <Footer />

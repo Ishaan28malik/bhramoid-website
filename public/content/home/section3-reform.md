@@ -3,6 +3,7 @@
 ## RTI Challenges
 title: "Right to Information (RTI) Challenges"
 icon: "📋"
+learn_more_slug: "/rti-reform"
 problems:
   - "Delayed responses to RTI applications"
   - "Incomplete or evasive information provided"
@@ -14,6 +15,7 @@ solution: "BrahMoID's RTI management system ensures timely responses, complete t
 ## RTR Issues
 title: "Right to Redressal (RTR) Issues"
 icon: "⚖️"
+learn_more_slug: "/rtr-issues"
 problems:
   - "Grievances go unaddressed for months or years"
   - "No accountability for delayed responses"
@@ -25,6 +27,7 @@ solution: "Our grievance management system provides real-time tracking, automati
 ## Citizen Feedback
 title: "Citizen Feedback Mechanisms"
 icon: "💬"
+learn_more_slug: "/citizen-feedback"
 problems:
   - "No systematic way to collect citizen feedback"
   - "Feedback is collected but not acted upon"
@@ -36,6 +39,7 @@ solution: "BrahMoID's feedback system enables continuous citizen engagement, rea
 ## Grievance Resolution
 title: "Grievance Resolution Systems"
 icon: "🔧"
+learn_more_slug: "/grievance-resolution"
 problems:
   - "Multiple disconnected grievance systems"
   - "No coordination between different departments"
