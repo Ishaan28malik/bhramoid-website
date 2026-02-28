@@ -227,6 +227,18 @@
   line-height: 1.8;
 }
 
+/* Learn More button: centered at bottom of card with margin-top */
+.content-block .block-cta,
+.reform-block .block-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.content-block .block-cta .btn,
+.reform-block .block-cta .btn {
+  display: inline-flex;
+}
+
 /* Content Blocks Full */
 .content-blocks {
   display: flex;
@@ -344,6 +356,10 @@
 .solution-preview p {
   color: var(--text-secondary);
   line-height: 1.8;
+}
+
+.reform-block .block-cta {
+  margin-top: 2.5rem;
 }
 
 /* Context Strip */

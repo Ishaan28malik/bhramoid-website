@@ -50,7 +50,9 @@ const Home = () => {
                     {block.icon && <div className="block-icon">{block.icon}</div>}
                     <h3>{block.title}</h3>
                     {block.content && <MarkdownContent content={block.content} />}
-                    <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '/about'} className="btn">Learn More</Link>
+                    <div className="block-cta">
+                      <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '/about'} className="btn">Learn More</Link>
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
@@ -93,7 +95,9 @@ const Home = () => {
                         <MarkdownContent content={block.solution} />
                       </div>
                     )}
-                    <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '#'} className="btn">Learn More</Link>
+                    <div className="block-cta">
+                      <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '/about'} className="btn">Learn More</Link>
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
