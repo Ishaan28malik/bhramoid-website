@@ -10,60 +10,29 @@ const HeroSlider = () => {
   const [isPaused, setIsPaused] = useState(false);
   const { content, loading, error } = useContent('home/hero.md');
 
-  // Default slides (fallback)
+  // Default slides (fallback) – match hero.md
   const defaultSlides = [
-    {
-      title: "Rebuilding Indian Governance from the Ground Up",
-      subtitle: "Take control of your democracy today",
-      description: "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution.",
-      id: 1
-    },
-    {
-      title: "Upgrading Legacy Democracy with Digital Innovation",
-      subtitle: "Don't trust, verify",
-      description: "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency.",
-      id: 2
-    },
-    {
-      title: "Tackling Corruption Through Transparency and Accountability",
-      subtitle: "Your governance. Your rules. Your future.",
-      description: "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership.",
-      id: 3
-    }
+    { title: "Political Culture Shift / Merit & Performance", subtitle: "Changing the Way Politics Works in India", description: "Replacing caste and cash politics with merit, accountability, and performance-driven leadership.", id: 1 },
+    { title: "Digital Democracy & Participation", subtitle: "Upgrading Legacy Democracy with Digital Innovation", description: "From paper-based administration to real-time citizen participation across villages, towns, and cities.", id: 2 },
+    { title: "Anti-Corruption & Transparency", subtitle: "Tacking Corruption Through Transparency and Accountability", description: "Every rupee tracked. Every project verified. Every leader answerable.", id: 3 },
+    { title: "National Vision / Transformation", subtitle: "From Developing to Developed -- The Journey Starts from the Group Up", description: "From Panchayat to Parliament, we are rebuilding governance so that it can be seen, measured, and trusted.", id: 4 },
+    { title: "Identity & Future Governance", subtitle: "Digital identity as the Foundation of Modern Governance", description: "Unified citizen identity that powers insights, inclusion, and trustworthy decision-making.", id: 5 }
   ];
 
-  // Parse slides from content
+  // Parse slides from content (supports Slide 1 through Slide 5 from home/hero.md)
   const slides = React.useMemo(() => {
-    // If content is loaded and has slides, use it
-    if (content && (content['Slide 1'] || content['Slide 2'] || content['Slide 3'])) {
-      const slide1 = content['Slide 1'] || {};
-      const slide2 = content['Slide 2'] || {};
-      const slide3 = content['Slide 3'] || {};
-
-      return [
-        {
-          title: slide1.title || defaultSlides[0].title,
-          subtitle: slide1.subtitle || defaultSlides[0].subtitle,
-          description: slide1.description || defaultSlides[0].description,
-          id: 1
-        },
-        {
-          title: slide2.title || defaultSlides[1].title,
-          subtitle: slide2.subtitle || defaultSlides[1].subtitle,
-          description: slide2.description || defaultSlides[1].description,
-          id: 2
-        },
-        {
-          title: slide3.title || defaultSlides[2].title,
-          subtitle: slide3.subtitle || defaultSlides[2].subtitle,
-          description: slide3.description || defaultSlides[2].description,
-          id: 3
-        }
-      ];
-    }
-    
-    // Fallback to default content
-    return defaultSlides;
+    if (!content) return defaultSlides;
+    return [1, 2, 3, 4, 5].map((i) => {
+      const key = `Slide ${i}`;
+      const slideContent = content[key];
+      const fallback = defaultSlides[i - 1];
+      return {
+        title: (slideContent && slideContent.title) || fallback.title,
+        subtitle: (slideContent && slideContent.subtitle) || fallback.subtitle,
+        description: (slideContent && slideContent.description) || fallback.description,
+        id: i
+      };
+    });
   }, [content]);
 
   useEffect(() => {

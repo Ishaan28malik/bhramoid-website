@@ -1,16 +1,26 @@
 # Hero Section
 
 ## Slide 1
-title: "Rebuilding Indian Governance from the Ground Up"
-subtitle: "Take control of your democracy today"
-description: "Advanced leader? Total beginner? Now you can manage governance, engage citizens, and more with comprehensive transparency tools in one secure solution."
+title: "Political Culture Shift / Merit & Performance"
+subtitle: "Changing the Way Politics Works in India"
+description: "Replacing caste and cash politics with merit, accountability, and performance-driven leadership."
 
 ## Slide 2
-title: "Upgrading Legacy Democracy with Digital Innovation"
-subtitle: "Don't trust, verify"
-description: "BrahMoID's secure governance platform makes it easier for you to protect and manage your democratic participation with complete transparency."
+title: "Digital Democracy & Participation"
+subtitle: "Upgrading Legacy Democracy with Digital Innovation"
+description: "From paper-based administration to real-time citizen participation across villages, towns, and cities."
 
 ## Slide 3
-title: "Tackling Corruption Through Transparency and Accountability"
-subtitle: "Your governance. Your rules. Your future."
-description: "Industry-leading transparency, absolute ease of use, and all-in-one connectivity for modern political leadership."
+title: "Anti-Corruption & Transparency"
+subtitle: "Tackling Corruption Through Transparency and Accountability"
+description: "Every rupee tracked. Every project verified. Every leader answerable."
+
+## Slide 4
+title: "National Vision / Transformation"
+subtitle: "From Developing to Developed -- The Journey Starts from the Ground Up"
+description: "From Panchayat to Parliament, we are rebuilding governance so that it can be seen, measured, and trusted."
+
+## Slide 5
+title: "Identity & Future Governance"
+subtitle: "Digital identity as the Foundation of Modern Governance"
+description: "Unified citizen identity that powers insights, inclusion, and trustworthy decision-making."

@@ -19,14 +19,14 @@ const Footer = () => {
             <Link to="/partner">Partner With Us</Link>
             <Link to="/start-a-pilot">Start a Pilot</Link>
             <Link to="/request-a-demo">Request a Demo</Link>
-            <Link to="/model-comparison">3D Model Comparison</Link>
           </div>
           <div className="footer-section">
             <h4>Social</h4>
             <div className="social-links">
               <a href="https://twitter.com/brahmoid" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
               <a href="https://linkedin.com/company/brahmoid" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
-              <a href="https://facebook.com/brahmoid" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+              <a href="https://www.instagram.com/brahmoid" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+              <a href="https://www.facebook.com/brahmoid/?ref=1" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
             </div>
           </div>
         </div>

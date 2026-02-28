@@ -1,31 +1,278 @@
 # Your Competitive Edge in Modern Politics
 
-## Row 1 - Block 1
-title: "Digital-First Campaign Strategy"
-icon: "📊"
-content: "In an era where digital presence determines electoral success, BrahMoID provides political leaders with cutting-edge tools to connect directly with constituents. Our platform enables real-time communication, data-driven decision making, and transparent governance practices that build trust and credibility."
+========================================
+LANDING PAGE CONTENT
+========================================
 
-## Row 1 - Block 2
-title: "Transparency as a Differentiator"
-icon: "🔍"
-content: "Voters increasingly demand accountability from their representatives. BrahMoID's transparent governance framework allows leaders to demonstrate integrity, track performance, and build a reputation for honest public service. This transparency becomes your strongest campaign asset."
+---
 
-## Row 2 - Block 1
-title: "Data-Driven Constituency Management"
-icon: "📈"
-content: "Make informed decisions based on real constituency data. Track grievances, monitor development projects, analyze feedback, and respond to citizen needs systematically. This data-driven approach ensures you address the issues that matter most to your voters."
+## Transparency & Accountability
 
-## Row 2 - Block 2
-title: "Independent Platform Advantage"
-icon: "⚖️"
-content: "Unlike party-affiliated tools, BrahMoID operates independently, allowing you to maintain your unique political identity while leveraging powerful governance technology. Build your brand and reputation without being constrained by party limitations."
+**title:** Invoking Transparency & Accountability for Corruption-Free Governance  
+**icon:** 🧾  
+**learn_more_slug:** /transparency-accountability
 
-## Row 3 - Block 1
-title: "Cost-Effective Campaign Infrastructure"
-icon: "💰"
-content: "Traditional campaign infrastructure requires significant investment in technology, personnel, and systems. BrahMoID provides a comprehensive governance platform at a fraction of the cost, allowing you to allocate resources more effectively toward direct voter engagement."
+### Summary
 
-## Row 3 - Block 2
-title: "Sustainable Long-Term Engagement"
-icon: "🔄"
-content: "Elections are won through consistent engagement, not just campaign season activity. BrahMoID enables continuous communication with constituents, building lasting relationships that translate into electoral support when it matters most."
+Voters lose trust when they cannot see how public money is handled. When fund flow and spending are unclear, suspicion becomes the default.
+
+The leader who can *prove honesty* stands out.
+
+BrahMoID turns public funds into a real-time, publicly visible audit trail.
+
+---
+
+## Real-Time Project Accountability
+
+**title:** Real-Time Project Transparency  
+**icon:** 📊  
+**learn_more_slug:** /project-transparency
+
+### Summary
+
+Project information often stays locked in files. Citizens rarely see budgets, contractors, or timelines.
+
+BrahMoID makes every project stage openly visible and verifiable.
+
+---
+
+## Digital Democracy
+
+**title:** Citizens at the Center of Decision-Making  
+**icon:** 🗳️  
+**learn_more_slug:** /digital-democracy
+
+### Summary
+
+Social media voices are scattered and unverified. Leaders lack structured public feedback.
+
+BrahMoID creates a verified, constituency-wide participation platform.
+
+---
+
+## Digital Identity Insights
+
+**title:** Digital Identity for Electoral Insights  
+**icon:** 🪪  
+**learn_more_slug:** /digital-identity-insights
+
+### Summary
+
+Leaders often rely on guesswork to understand constituencies.
+
+BrahMoID provides data-backed, AI-processed constituency insights.
+
+---
+
+## Merit-Based Leadership
+
+**title:** Shift From Caste & Cash Politics to Merit  
+**icon:** 🏛️  
+**learn_more_slug:** /merit-based-leadership
+
+### Summary
+
+Identity politics and money power dominate candidate selection.
+
+BrahMoID enables talent-first leadership pipelines.
+
+---
+
+========================================
+LEARN MORE PAGES
+========================================
+
+---
+
+# Transparency & Accountability (Detail Page)
+
+## A Complete Financial Storyline
+
+BrahMoID shows:
+
+- Exact amount released with department source  
+- Date, time, and purpose  
+- Milestone-wise spending  
+- Sanctioned vs actual cost comparison  
+- Labour/vendor-linked progress logs  
+- Alerts for overspending or delays  
+
+Acts as a 24×7 audit system.
+
+## How It Prevents Corruption
+
+Prevents:
+
+- Inflated billing  
+- Duplicate entries  
+- Fund diversion  
+- Ghost execution  
+- Evidence-free billing  
+
+Leaders prove honesty through verifiable proof.
+
+---
+
+# Real-Time Project Transparency (Detail Page)
+
+## Open Access to Project Details
+
+Public visibility for:
+
+- Sanction orders  
+- Budgets  
+- Expenditure logs  
+- Progress updates  
+- Contractor histories  
+- Labour logs  
+- Quality certifications  
+
+## Eliminating Blind Spots
+
+Makes:
+
+- Delays traceable  
+- Low-quality work evident  
+- Missing records noticeable  
+
+## Citizen Oversight
+
+Citizens can:
+
+- Track progress  
+- Compare timelines  
+- Verify claims  
+- Flag inconsistencies  
+- Hold leaders accountable constructively  
+
+---
+
+# Digital Democracy (Detail Page)
+
+## Features
+
+Verified citizens can:
+
+- Rate decisions  
+- Join polls  
+- Provide feedback  
+- Express satisfaction/dissatisfaction  
+- Track policy influence  
+
+All inputs recorded on a tamper-proof ledger.
+
+Citizens judge delivery, not promises.
+
+---
+
+# Digital Identity Insights (Detail Page)
+
+## Governance-Oriented Profiles
+
+May include:
+
+- Education  
+- Occupation  
+- Age group  
+- Caste/community  
+- Religion (policy sensitivity use)  
+- Welfare history  
+- Household indicators  
+- Local issues  
+
+AI converts these into insights.
+
+## Leader Capabilities
+
+Leaders can:
+
+- Run targeted polls  
+- Track group sentiment  
+- Detect early unrest  
+- Predict policy impact  
+- Prioritise development  
+
+Flow:
+
+Digital Identity → Insights → Decisions → Governance
+
+---
+
+# Merit-Based Leadership (Detail Page)
+
+## State-Level Merit Examination
+
+Neutral leadership exams for participating parties.
+
+## Criteria Design
+
+### Governance Syllabus
+
+- Local governance  
+- Public finance  
+- Ethics  
+- Digital governance  
+- Social sectors  
+- Constitution  
+- Law & order  
+
+### Eligibility
+
+- Age range  
+- Education  
+- Domicile  
+- Clean record  
+
+### Bonus Weightage
+
+For:
+
+- Governance workers  
+- Ex-servicemen  
+- Community service  
+- Public-impact professionals  
+- Academic excellence  
+
+### Reservation Compliance
+
+- Reserved seats respected  
+- Open seats merit-based  
+
+### Behavioural Assessment
+
+Evaluates:
+
+- Ethics  
+- Leadership  
+- Empathy  
+- Communication  
+- Problem-solving  
+
+## Shared Talent Pool
+
+Parties can shortlist, interview, induct, and mentor.
+
+## Transparent Rankings
+
+Based on:
+
+- Public feedback  
+- Transparency  
+- Ethics  
+- Delivery  
+
+Promotes merit-based political mobility.
+
+## New Leadership Culture
+
+Ends:
+
+- Caste-driven tickets  
+- Cash influence  
+- Opaque nominations  
+
+Begins:
+
+- Talent-first politics  
+- Measurable leadership  
+- Transparent pipelines
