@@ -44,18 +44,24 @@ const Home = () => {
           {s1.loading && <p className="section-loading">Loading...</p>}
           {!s1.loading && section1Blocks.length > 0 && chunk(section1Blocks, 2).map((row, rowIndex) => (
             <div key={rowIndex} className="content-row">
-              {row.map(([_, block], i) => (
-                <ScrollReveal key={block.title} delay={0.1 * (rowIndex * 2 + i)}>
-                  <div className="content-block enhanced-block">
-                    {block.icon && <div className="block-icon">{block.icon}</div>}
-                    <h3>{block.title}</h3>
-                    {block.content && <MarkdownContent content={block.content} />}
-                    <div className="block-cta">
-                      <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '/about'} className="btn">Learn More</Link>
+              {row.map(([_, block], i) => {
+                const title = block.title || block['**title**'];
+                const icon = block.icon || block['**icon**'];
+                const content = block.content || block.body;
+                const learnMoreSlug = block.learn_more_slug || block['**learn_more_slug**'] || '/about';
+                return (
+                  <ScrollReveal key={title || i} delay={0.1 * (rowIndex * 2 + i)}>
+                    <div className="content-block enhanced-block">
+                      {icon && <div className="block-icon">{icon}</div>}
+                      <h3>{title}</h3>
+                      {content && <MarkdownContent content={content} />}
+                      <div className="block-cta">
+                        <Link to={learnMoreSlug} className="btn">Learn More</Link>
+                      </div>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                );
+              })}
             </div>
           ))}
         </div>
