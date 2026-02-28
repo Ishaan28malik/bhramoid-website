@@ -1,34 +1,39 @@
 const fs = require('fs');
 const path = require('path');
 
-// Copy content folder to public folder
-const sourceDir = path.join(__dirname, '../content');
-const destDir = path.join(__dirname, '../public/content');
+// Use public/content as the single source of truth. Do NOT copy root content/ over it.
+// The app loads from /content/ which is served from public/content.
+// If you need to seed public/content from root content/, run that copy manually or
+// add a separate script. This script no longer overwrites public/content.
+const publicContentDir = path.join(__dirname, '../public/content');
 
-function copyRecursiveSync(src, dest) {
-  const exists = fs.existsSync(src);
-  const stats = exists && fs.statSync(src);
-  const isDirectory = exists && stats.isDirectory();
-
-  if (isDirectory) {
-    if (!fs.existsSync(dest)) {
-      fs.mkdirSync(dest, { recursive: true });
+if (!fs.existsSync(publicContentDir)) {
+  const rootContent = path.join(__dirname, '../content');
+  if (fs.existsSync(rootContent)) {
+    function copyRecursiveSync(src, dest) {
+      const exists = fs.existsSync(src);
+      const stats = exists && fs.statSync(src);
+      const isDirectory = exists && stats.isDirectory();
+      if (isDirectory) {
+        if (!fs.existsSync(dest)) {
+          fs.mkdirSync(dest, { recursive: true });
+        }
+        fs.readdirSync(src).forEach((childItemName) => {
+          copyRecursiveSync(
+            path.join(src, childItemName),
+            path.join(dest, childItemName)
+          );
+        });
+      } else {
+        fs.copyFileSync(src, dest);
+      }
     }
-    fs.readdirSync(src).forEach((childItemName) => {
-      copyRecursiveSync(
-        path.join(src, childItemName),
-        path.join(dest, childItemName)
-      );
-    });
+    copyRecursiveSync(rootContent, publicContentDir);
+    console.log('✅ Seeded public/content from content/ (public/content was missing)');
   } else {
-    fs.copyFileSync(src, dest);
+    fs.mkdirSync(publicContentDir, { recursive: true });
+    console.log('✅ public/content directory ensured');
   }
-}
-
-// Copy content to public
-if (fs.existsSync(sourceDir)) {
-  copyRecursiveSync(sourceDir, destDir);
-  console.log('✅ Content files copied to public/content');
 } else {
-  console.warn('⚠️  Content directory not found');
+  console.log('✅ Using existing public/content (source of truth)');
 }
