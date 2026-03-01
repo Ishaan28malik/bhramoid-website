@@ -8,9 +8,9 @@ LANDING PAGE CONTENT
 
 ## Transparency & Accountability
 
-**title:** Invoking Transparency & Accountability for Corruption-Free Governance  
-**icon:** 🧾  
-**learn_more_slug:** /transparency-accountability
+title: Invoking Transparency & Accountability for Corruption-Free Governance  
+icon: 🧾  
+learn_more_slug: /transparency-accountability
 
 ### Summary
 
@@ -24,9 +24,9 @@ BrahMoID turns public funds into a real-time, publicly visible audit trail.
 
 ## Real-Time Project Accountability
 
-**title:** Real-Time Project Transparency  
-**icon:** 📊  
-**learn_more_slug:** /project-transparency
+title: Real-Time Project Transparency  
+icon: 📊  
+learn_more_slug: /project-transparency
 
 ### Summary
 
@@ -38,9 +38,9 @@ BrahMoID makes every project stage openly visible and verifiable.
 
 ## Digital Democracy
 
-**title:** Citizens at the Center of Decision-Making  
-**icon:** 🗳️  
-**learn_more_slug:** /digital-democracy
+title: Citizens at the Center of Decision-Making  
+icon: 🗳️  
+learn_more_slug: /digital-democracy
 
 ### Summary
 
@@ -52,9 +52,9 @@ BrahMoID creates a verified, constituency-wide participation platform.
 
 ## Digital Identity Insights
 
-**title:** Digital Identity for Electoral Insights  
-**icon:** 🪪  
-**learn_more_slug:** /digital-identity-insights
+title: Digital Identity for Electoral Insights  
+icon: 🪪  
+learn_more_slug: /digital-identity-insights
 
 ### Summary
 
@@ -66,15 +66,17 @@ BrahMoID provides data-backed, AI-processed constituency insights.
 
 ## Merit-Based Leadership
 
-**title:** Shift From Caste & Cash Politics to Merit  
-**icon:** 🏛️  
-**learn_more_slug:** /merit-based-leadership
+title: Shift From Caste & Cash Politics to Merit  
+icon: 🏛️  
+learn_more_slug: /merit-based-leadership
 
 ### Summary
 
 Identity politics and money power dominate candidate selection.
 
 BrahMoID enables talent-first leadership pipelines.
+
+## LEARN MORE PAGES
 
 ---
 

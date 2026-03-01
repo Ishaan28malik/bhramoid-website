@@ -8,9 +8,10 @@ LANDING PAGE CONTENT
 
 ## RTI Challenges
 
-**title:** RTI Mechanism Requires Overhaul  
-**icon:** 📋  
-**learn_more_slug:** /rti-reform
+title: RTI Mechanism Requires Overhaul
+icon: 📋
+learn_more_slug: /rti-reform
+problems:
 
 ### Problems
 
@@ -28,9 +29,10 @@ BrahMoID ensures timely responses, transparency, and proactive disclosure. Citiz
 
 ## RTR Issues
 
-**title:** Right to Recall (RTR) Issues  
-**icon:** ⚖️  
-**learn_more_slug:** /right-to-recall
+title: Right to Recall (RTR) Issues
+icon: ⚖️
+learn_more_slug: /right-to-recall
+problems:
 
 ### Problems
 
@@ -48,9 +50,10 @@ BrahMoID enables grievance tracking, escalation, and guaranteed response timelin
 
 ## Citizen Feedback
 
-**title:** Citizen Feedback Mechanisms  
-**icon:** 💬  
-**learn_more_slug:** /citizen-feedback
+title: Citizen Feedback Mechanisms
+icon: 💬
+learn_more_slug: /citizen-feedback
+problems:
 
 ### Problems
 
@@ -68,9 +71,10 @@ BrahMoID enables real-time engagement, sentiment analysis, and data-driven impro
 
 ## Grievance Resolution
 
-**title:** Grievance Resolution Systems  
-**icon:** 🔧  
-**learn_more_slug:** /grievance-resolution
+title: Grievance Resolution Systems
+icon: 🔧
+learn_more_slug: /grievance-resolution
+problems:
 
 ### Problems
 
@@ -83,6 +87,8 @@ BrahMoID enables real-time engagement, sentiment analysis, and data-driven impro
 ### Solution
 
 Unified grievance system with tracking, coordination, and measurable accountability.
+
+## LEARN MORE DETAIL PAGES
 
 ---
 
