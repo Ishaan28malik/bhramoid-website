@@ -298,11 +298,14 @@
   position: relative;
 }
 
-.reform-block h3 {
+.reform-block h3,
+.reform-block .reform-block-title {
   margin-bottom: 30px;
   color: var(--text-primary);
   font-size: 1.75rem;
   text-align: center;
+  display: block;
+  font-weight: 700;
 }
 
 .problem-zone {

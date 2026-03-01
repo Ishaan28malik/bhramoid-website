@@ -8,7 +8,7 @@ import './Home.css';
 
 const SECTION_FILES = {
   section1: 'home/section1-competitive-edge.md',
-  section3: 'home/section3-reform.md',
+  section3: 'home/section2-reform.md',
   section4: 'home/section4-transformation.md',
 };
 
@@ -100,18 +100,18 @@ const Home = () => {
           {s3.loading && <p className="section-loading">Loading...</p>}
           {!s3.loading && section3Blocks.length > 0 && (
             <div className="reform-blocks">
-              {section3Blocks.map(([_, block], i) => {
-                const title = block.title || block['**title**'];
+              {section3Blocks.map(([sectionName, block], i) => {
+                const title = block.title || block['**title**'] || sectionName;
                 const icon = block.icon || block['**icon**'];
                 const problems = block.problems || block.items || [];
                 const rawSolution = block.solution || (block.body && block.body.includes('### Solution') ? block.body.split('### Solution')[1] : '');
                 const solution = rawSolution ? trimSolution(rawSolution) : null;
                 const learnMoreSlug = block.learn_more_slug || block['**learn_more_slug**'] || '/about';
                 return (
-                  <ScrollReveal key={title || i} delay={0.1 * (i + 1)}>
+                  <ScrollReveal key={title || sectionName || i} delay={0.1 * (i + 1)}>
                     <div className="reform-block enhanced-block">
                       {icon && <div className="reform-icon">{icon}</div>}
-                      <h3>{title}</h3>
+                      <h3 className="reform-block-title">{title}</h3>
                       {problems.length > 0 && (
                         <div className="problem-zone">
                           <h4>Problem Zone:</h4>
