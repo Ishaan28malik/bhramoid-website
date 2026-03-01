@@ -10,6 +10,7 @@ const SLUG_TITLES = {
   'merit-based-leadership': 'Merit-Based Leadership',
   'rti-reform': 'RTI Reform',
   'rtr-issues': 'Right to Redressal (RTR)',
+  'right-to-recall': 'Right to Recall (RTR)',
   'citizen-feedback': 'Citizen Feedback',
   'grievance-resolution': 'Grievance Resolution',
 };

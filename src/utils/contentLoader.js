@@ -79,6 +79,10 @@ export const parseStructuredContent = (markdown) => {
         value = [];
       }
       sections[currentSection][key] = value;
+      // Normalize **key** to key so both block.title and block['**title**'] work
+      if (typeof key === 'string' && key.startsWith('**') && key.endsWith('**') && key.length > 4) {
+        sections[currentSection][key.slice(2, -2)] = value;
+      }
     }
     // List items (starting with -)
     else if (trimmedLine.startsWith('- ') && currentSection) {

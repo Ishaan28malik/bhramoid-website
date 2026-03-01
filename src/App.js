@@ -84,6 +84,7 @@ function App() {
               {/* Section 2 (Reform) learn more pages */}
               <Route path="/rti-reform" element={<LearnMorePage />} />
               <Route path="/rtr-issues" element={<LearnMorePage />} />
+              <Route path="/right-to-recall" element={<LearnMorePage />} />
               <Route path="/citizen-feedback" element={<LearnMorePage />} />
               <Route path="/grievance-resolution" element={<LearnMorePage />} />
             </Routes>

@@ -20,13 +20,33 @@ const chunk = (arr, size) => {
   return result;
 };
 
+// Trim body to only landing content: remove "### Summary" heading and content after --- or ===
+const trimSection1Body = (raw) => {
+  if (!raw || typeof raw !== 'string') return '';
+  let s = raw.replace(/^###\s*Summary\s*\n*/i, '').trim();
+  const sep = s.match(/\n---\s*\n|\n=+\s*\n/);
+  if (sep) s = s.slice(0, sep.index).trim();
+  return s;
+};
+
+// Trim solution text to stop at --- or LEARN MORE DETAIL PAGES
+const trimSolution = (raw) => {
+  if (!raw || typeof raw !== 'string') return '';
+  const sep = raw.match(/\n---\s*\n|\n=+\s*\n|LEARN MORE DETAIL PAGES/i);
+  return sep ? raw.slice(0, sep.index).trim() : raw.trim();
+};
+
 const Home = () => {
   const s1 = useContent(SECTION_FILES.section1);
   const s3 = useContent(SECTION_FILES.section3);
   const s4 = useContent(SECTION_FILES.section4);
 
-  const section1Blocks = s1.content ? Object.entries(s1.content) : [];
-  const section3Blocks = s3.content ? Object.entries(s3.content) : [];
+  // Section 1: first 5 sections are landing blocks (file order); support **key** or key
+  const section1Entries = s1.content ? Object.entries(s1.content) : [];
+  const section1Blocks = section1Entries.slice(0, 5);
+  // Section 3 Reform: first 4 sections are landing blocks
+  const section3Entries = s3.content ? Object.entries(s3.content) : [];
+  const section3Blocks = section3Entries.slice(0, 4);
   const section4Blocks = s4.content ? Object.entries(s4.content) : [];
 
   return (
@@ -42,19 +62,22 @@ const Home = () => {
             <h2 className="section-title">Your Competitive Edge in Modern Politics</h2>
           </ScrollReveal>
           {s1.loading && <p className="section-loading">Loading...</p>}
-          {!s1.loading && section1Blocks.length > 0 && chunk(section1Blocks, 2).map((row, rowIndex) => (
-            <div key={rowIndex} className="content-row">
-              {row.map(([_, block], i) => {
+          {!s1.loading && section1Blocks.length > 0 && (
+            <div className="section-competitive-grid">
+              {section1Blocks.map(([_, block], i) => {
                 const title = block.title || block['**title**'];
                 const icon = block.icon || block['**icon**'];
-                const content = block.content || block.body;
+                const rawContent = block.content || block.body || '';
+                const content = rawContent ? trimSection1Body(rawContent) : '';
                 const learnMoreSlug = block.learn_more_slug || block['**learn_more_slug**'] || '/about';
                 return (
-                  <ScrollReveal key={title || i} delay={0.1 * (rowIndex * 2 + i)}>
+                  <ScrollReveal key={title || i} delay={0.1 * i}>
                     <div className="content-block enhanced-block">
                       {icon && <div className="block-icon">{icon}</div>}
                       <h3>{title}</h3>
-                      {content && <MarkdownContent content={content} />}
+                      <div className="content-block-body">
+                        {content && <MarkdownContent content={content} />}
+                      </div>
                       <div className="block-cta">
                         <Link to={learnMoreSlug} className="btn">Learn More</Link>
                       </div>
@@ -63,7 +86,7 @@ const Home = () => {
                 );
               })}
             </div>
-          ))}
+          )}
         </div>
       </section>
 
@@ -77,36 +100,44 @@ const Home = () => {
           {s3.loading && <p className="section-loading">Loading...</p>}
           {!s3.loading && section3Blocks.length > 0 && (
             <div className="reform-blocks">
-              {section3Blocks.map(([_, block], i) => (
-                <ScrollReveal key={block.title} delay={0.1 * (i + 1)}>
-                  <div className="reform-block enhanced-block">
-                    {block.icon && <div className="reform-icon">{block.icon}</div>}
-                    <h3>{block.title}</h3>
-                    {block.problems && block.problems.length > 0 && (
-                      <div className="problem-zone">
-                        <h4>Problem Zone:</h4>
-                        <ul>
-                          {block.problems.map((p, j) => (
-                            <li key={j}>{p}</li>
-                          ))}
-                        </ul>
+              {section3Blocks.map(([_, block], i) => {
+                const title = block.title || block['**title**'];
+                const icon = block.icon || block['**icon**'];
+                const problems = block.problems || block.items || [];
+                const rawSolution = block.solution || (block.body && block.body.includes('### Solution') ? block.body.split('### Solution')[1] : '');
+                const solution = rawSolution ? trimSolution(rawSolution) : null;
+                const learnMoreSlug = block.learn_more_slug || block['**learn_more_slug**'] || '/about';
+                return (
+                  <ScrollReveal key={title || i} delay={0.1 * (i + 1)}>
+                    <div className="reform-block enhanced-block">
+                      {icon && <div className="reform-icon">{icon}</div>}
+                      <h3>{title}</h3>
+                      {problems.length > 0 && (
+                        <div className="problem-zone">
+                          <h4>Problem Zone:</h4>
+                          <ul>
+                            {problems.map((p, j) => (
+                              <li key={j}>{p}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div className="transition-line">
+                        <div className="arrow-graphic">→</div>
                       </div>
-                    )}
-                    <div className="transition-line">
-                      <div className="arrow-graphic">→</div>
-                    </div>
-                    {block.solution && (
-                      <div className="solution-preview">
-                        <h4>Solution Preview:</h4>
-                        <MarkdownContent content={block.solution} />
+                      {solution && (
+                        <div className="solution-preview">
+                          <h4>Solution Preview:</h4>
+                          <MarkdownContent content={solution} />
+                        </div>
+                      )}
+                      <div className="block-cta">
+                        <Link to={learnMoreSlug} className="btn">Learn More</Link>
                       </div>
-                    )}
-                    <div className="block-cta">
-                      <Link to={block.learn_more_slug || block['**learn_more_slug**'] || '/about'} className="btn">Learn More</Link>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                );
+              })}
             </div>
           )}
         </div>

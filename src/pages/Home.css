@@ -208,6 +208,25 @@
   margin-bottom: 40px;
 }
 
+/* Section 1: uniform grid so all cards same size and height */
+.section-competitive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.section-competitive-grid .content-block {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.section-competitive-grid .content-block-body {
+  flex: 1;
+  min-height: 0;
+}
+
 .content-block {
   padding: 40px;
   border: 2px solid var(--border-color);
